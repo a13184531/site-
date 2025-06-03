@@ -1,0 +1,435 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern, readable font */
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light greenish-white background */
+    color: #333;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Professional heading font */
+    color: #004d40; /* Dark Green */
+    margin-top: 0;
+}
+
+h1 { font-size: 2.8rem; margin-bottom: 0.8em; }
+h2 { font-size: 2.2rem; margin-bottom: 0.7em; }
+h3 { font-size: 1.6rem; margin-bottom: 0.6em; }
+
+a {
+    color: #0077cc; /* Bright Blue */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #005fa3; /* Darker Bright Blue */
+}
+
+.container { /* Re-introduce if needed, but preferring full-width sections for modern look */
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: #ffffff; /* White background */
+    color: #004d40; /* Dark Green text */
+    padding: 15px 0;
+    border-bottom: 3px solid #0077cc; /* Bright Blue accent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .logo img {
+    height: 60px; /* Adjusted logo size */
+    vertical-align: middle;
+}
+
+header .container { /* Using container for header content alignment */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex; /* Align nav items horizontally */
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: #004d40; /* Dark Green */
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active { /* Class for active link */
+    color: #0077cc; /* Bright Blue */
+    border-bottom: 2px solid #0077cc;
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(rgba(0, 77, 64, 0.7), rgba(0, 122, 204, 0.5)), url('hero-background.jpg'); /* Placeholder, add a real image */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; /* White text */
+    padding: 80px 20px; /* Increased padding */
+    text-align: center;
+    min-height: 70vh; /* Make hero section taller */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero .hero-content {
+    max-width: 800px;
+}
+
+#hero h1 {
+    font-size: 3.5rem; /* Larger hero title */
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#hero p {
+    font-size: 1.3rem; /* Larger hero text */
+    margin-bottom: 40px; /* Increased spacing */
+    line-height: 1.8;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #0077cc; /* Bright Blue */
+    color: #ffffff;
+    padding: 15px 35px; /* Larger button */
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px; /* More rounded corners */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    background: #005fa3; /* Darker Bright Blue */
+    color: #ffffff;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* General Section Styling */
+section {
+    padding: 60px 20px; /* Uniform padding for sections */
+    text-align: center;
+}
+
+section:nth-of-type(even) {
+    background-color: #ffffff; /* White background for even sections */
+}
+
+section:nth-of-type(odd) {
+    background-color: #e8f5e9; /* Very Light Green for odd sections, except hero */
+}
+#hero + section { /* Ensure section after hero has the light green if it's odd */
+    background-color: #e8f5e9;
+}
+
+
+section h2 {
+    margin-bottom: 50px; /* Increased bottom margin for section titles */
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+section h2::after { /* Underline effect for section titles */
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #0077cc; /* Bright Blue */
+}
+
+
+/* Services Section */
+#services .service-grid { /* Using CSS Grid for services */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between grid items */
+    text-align: left;
+}
+
+#services .service {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#services .service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+#services .service h3 {
+    color: #0077cc; /* Bright Blue for service titles */
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Why Choose Us Section */
+#why-us .arguments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+#why-us .argument {
+    background: #ffffff; /* White background for cards */
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid #004d40; /* Dark Green accent border */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+#why-us .argument h3 {
+    color: #004d40; /* Dark Green for argument titles */
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* Testimonials Section */
+#testimonials {
+    background-color: #004d40; /* Dark Green background */
+    color: #ffffff;
+}
+
+#testimonials h2 {
+    color: #ffffff;
+}
+#testimonials h2::after {
+    background-color: #ffffff; /* White underline for dark background */
+}
+
+#testimonials .testimonial-slider { /* Basic structure for a slider */
+    display: flex;
+    overflow-x: auto; /* Allows horizontal scrolling for now */
+    gap: 20px;
+    padding: 20px 0;
+}
+
+#testimonials .testimonial {
+    background: #ffffff; /* White card */
+    color: #333;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 300px; /* Minimum width for each testimonial */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    flex: 0 0 auto; /* Prevent shrinking */
+}
+
+#testimonials .testimonial p {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+#testimonials .testimonial cite {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #0077cc; /* Bright Blue */
+    font-style: normal;
+}
+
+/* Contact Section */
+#contact {
+    background: #e8f5e9; /* Light Green background */
+}
+
+#contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #ffffff; /* White form background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+#contact-form .form-group {
+    margin-bottom: 25px;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #004d40; /* Dark Green */
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    border-color: #0077cc; /* Bright Blue focus */
+    outline: none;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button[type="submit"] {
+    /* Reusing .cta-button style */
+    width: 100%; /* Full width button */
+    padding: 15px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px; /* Increased padding */
+    background: #00251a; /* Very Dark Green/Almost Black */
+    color: #a0a0a0; /* Light Gray text */
+    font-size: 0.95rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { /* Tablets and larger phones */
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.9rem; }
+    h3 { font-size: 1.4rem; }
+
+    #hero h1 { font-size: 2.8rem; }
+    #hero p { font-size: 1.15rem; }
+
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) { /* Smaller tablets and mobile landscape */
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav {
+        margin-top: 15px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    #hero {
+        padding: 60px 15px;
+        min-height: auto; /* Adjust hero height */
+    }
+    #hero h1 { font-size: 2.3rem; }
+    #hero p { font-size: 1.1rem; }
+    .cta-button { padding: 12px 25px; font-size: 1.1rem; }
+
+
+    #services .service-grid,
+    #why-us .arguments {
+        grid-template-columns: 1fr; /* Stack items on smaller screens */
+        gap: 20px;
+    }
+
+    #services .service, #why-us .argument {
+        padding: 25px;
+    }
+
+    #contact-form {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile portrait */
+    body { font-size: 15px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.3rem; }
+
+    #hero h1 { font-size: 2rem; }
+    #hero p { font-size: 1rem; }
+
+    header { padding: 10px 0; }
+    header .logo img { height: 50px; }
+    header nav ul li { margin: 8px 0; }
+    header nav ul li a { font-size: 0.95rem; }
+
+    section { padding: 40px 15px; }
+    section h2 { margin-bottom: 30px; }
+
+    .cta-button { padding: 10px 20px; font-size: 1rem; }
+
+    #contact-form { padding: 20px; }
+    #contact-form input[type="text"],
+    #contact-form input[type="email"],
+    #contact-form textarea {
+        padding: 10px;
+    }
+}
+
+/* Utility for hamburger menu (not implemented in HTML yet, but for future) */
+.nav-toggle {
+    display: none; /* Hidden by default, shown in mobile view */
+    /* Styles for hamburger icon */
+}
+
+@media (max-width: 768px) {
+    /* Show hamburger, hide traditional nav */
+    /* .nav-toggle { display: block; } */
+    /* header nav ul { display: none; flex-direction: column; ... } */
+    /* header nav ul.active { display: flex; } */
+}
