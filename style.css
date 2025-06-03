@@ -648,3 +648,175 @@ section:not(#hero) {
 }
 */
 /* Add .is-visible class with JS when element is in viewport */
+
+
+/* ==========================================================================
+   Simulator Page Styles
+   ========================================================================== */
+
+/* Ensure main content area for simulator has adequate padding and consistent title */
+main#simulator-page {
+    padding-top: 40px; /* Add some space below sticky header */
+    padding-bottom: 60px;
+}
+
+#simulator-section { /* This is the section within simulator.html containing the form */
+    background-color: #ffffff; /* White background for the form area */
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    max-width: 800px; /* Limit width of the simulator form container */
+    margin: 0 auto; /* Center it */
+}
+
+#simulator-section h1 {
+    text-align: center; /* Center the H1 on this page */
+    color: #004d40; /* Dark Green, consistent with other H1s */
+    font-size: 2.5rem; /* Consistent with other page titles */
+    margin-bottom: 40px; /* Space below title */
+}
+
+/* Simulator Form Styling */
+#charging-simulator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between form groups */
+}
+
+#charging-simulator-form .form-group {
+    display: flex;
+    flex-direction: column; /* Stack label above input */
+    gap: 8px; /* Space between label and input */
+    text-align: left; /* Align labels to the left */
+}
+
+#charging-simulator-form label {
+    font-weight: 500; /* Medium weight for labels */
+    color: #004d40; /* Dark Green */
+    font-size: 1.05rem;
+}
+
+#charging-simulator-form input[type="number"],
+#charging-simulator-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da; /* Standard border */
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #f8f9fa; /* Light background for inputs */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#charging-simulator-form input[type="number"]:focus,
+#charging-simulator-form select:focus {
+    border-color: #007bff; /* Blue focus */
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Bootstrap-like focus */
+}
+
+/* Specific styling for small note under battery capacity */
+#charging-simulator-form #custom-battery-capacity-group small {
+    font-size: 0.85rem;
+    color: #6c757d; /* Muted text color */
+}
+
+
+/* Calculate button styling - reuse .cta-button and ensure it's full width or centered */
+#charging-simulator-form .cta-button {
+    width: 100%; /* Make button full width within the form */
+    margin-top: 15px; /* Add some space above the button */
+}
+
+/* Results Display Styling */
+#simulation-results {
+    margin-top: 40px; /* Space above results area */
+    padding: 30px;
+    background-color: #e9ecef; /* Light gray background for results */
+    border-radius: 8px;
+    text-align: center; /* Center text in results area */
+    border: 1px solid #dee2e6;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#simulation-results h2 {
+    color: #004d40; /* Dark Green for results title */
+    margin-bottom: 20px;
+}
+
+#simulation-results p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #343a40;
+}
+
+#simulation-results .estimated-time {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #007bff; /* Blue for the actual time */
+    margin: 10px 0;
+}
+
+#simulation-results .details {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 20px;
+}
+
+/* Form-level error messages for simulator (e.g., desired charge < current charge) */
+#charging-simulator-form #form-errors {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px; /* Already has margin-bottom in HTML style, this ensures it */
+    text-align: left;
+}
+#charging-simulator-form #form-errors ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+
+/* Active Navigation Link Styling */
+/* This ensures the .active class on nav links (manually added or by JS)
+   has the same visual treatment as hover, making it clear which page is active. */
+header nav ul li a.active {
+    color: #007bff; /* Blue color for active link */
+    border-bottom-color: #007bff; /* Blue underline for active link */
+    font-weight: 600; /* Slightly bolder for active link */
+}
+
+/* Responsive adjustments for Simulator Page */
+@media (max-width: 768px) {
+    #simulator-section {
+        padding: 30px 15px;
+    }
+    #simulator-section h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #simulator-section {
+        padding: 20px 10px;
+    }
+    #simulator-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    #charging-simulator-form {
+        gap: 20px;
+    }
+    #charging-simulator-form input[type="number"],
+    #charging-simulator-form select {
+        padding: 10px;
+    }
+    #simulation-results {
+        padding: 20px;
+    }
+    #simulation-results .estimated-time {
+        font-size: 1.5rem;
+    }
+}

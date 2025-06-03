@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging Time Simulator - SolarCharge Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="simulator.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- Placeholder for company logo -->
+                <img src="logo-placeholder.png" alt="SolarCharge Solutions Logo">
+            </div>
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#hero" class="nav-link">Home</a></li>
+                    <li><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="index.html#why-us" class="nav-link">Why Choose Us</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="simulator.html" class="nav-link active">Simulator</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle-button" aria-label="Toggle navigation" aria-expanded="false">
+                &#9776;
+            </button>
+        </div>
+    </header>
+
+    <main id="simulator-page" class="reveal-on-scroll">
+        <section id="simulator-section">
+            <div class="container">
+                <h1>EV Charging Time Simulator</h1>
+                <form id="charging-simulator-form">
+                    <div class="form-group">
+                        <label for="car-model">Car Model:</label>
+                        <select id="car-model" name="car-model">
+                            <option value="">Select Car Model</option>
+                            <option value="tesla_model_3_75">Tesla Model 3 (75kWh)</option>
+                            <option value="renault_zoe_52">Renault Zoe (52kWh)</option>
+                            <option value="nissan_leaf_40">Nissan Leaf (40kWh)</option>
+                            <option value="custom">Other (Enter Manually)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="custom-battery-capacity-group" style="display: none;">
+                        <label for="battery-capacity">Battery Capacity (kWh):</label>
+                        <input type="number" id="battery-capacity" name="battery-capacity" placeholder="e.g., 75" min="1">
+                        <small>Enter the total battery capacity of your vehicle.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="current-charge">Current Charge Level (%):</label>
+                        <input type="number" id="current-charge" name="current-charge" placeholder="e.g., 20" min="0" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="desired-charge">Desired Charge Level (%):</label>
+                        <input type="number" id="desired-charge" name="desired-charge" placeholder="e.g., 80" min="0" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="charger-type">Charger Type:</label>
+                        <select id="charger-type" name="charger-type">
+                            <option value="3.7">Home Outlet (3.7kW AC)</option>
+                            <option value="7">Home Wallbox (7kW AC)</option>
+                            <option value="11">Public AC (11kW)</option>
+                            <option value="22">Public AC (22kW)</option>
+                            <option value="50">Fast DC (50kW)</option>
+                            <option value="150">Supercharger (150kW DC)</option>
+                            <option value="350">Ultra-Fast DC (350kW)</option>
+                        </select>
+                    </div>
+                    <div id="form-errors" class="error-message" style="display:none; margin-bottom: 15px;"></div>
+                    <button type="submit" class="cta-button">Calculate Charging Time</button>
+                </form>
+
+                <div id="simulation-results" class="reveal-on-scroll" style="margin-top: 30px;">
+                    <!-- Results will be displayed here -->
+                    <p>Please fill in the details above to estimate charging time.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 SolarCharge Solutions. All rights reserved.</p>
+    </footer>
+
+    <!-- Include main script.js for header/footer functionality if needed,
+         but simulator.js is primary for this page's core logic.
+         The nav toggle will be handled by script.js if it's loaded.
+         Smooth scroll for nav links pointing to index.html sections will work directly.
+    -->
+    <script src="script.js" defer></script>
+    <!-- simulator.js is already linked in head -->
+</body>
+</html>
