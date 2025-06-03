@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 batteryCapacityInput.removeAttribute('readonly');
                 batteryCapacityInput.placeholder = 'e.g., 75';
                 customCapacityGroup.style.display = 'block'; // Show the group
-                batteryCapacityInput.focus();
+                // Defensive check before focus
+                if (customCapacityGroup.style.display === 'block' && !batteryCapacityInput.hasAttribute('readonly') && !batteryCapacityInput.disabled) {
+                    batteryCapacityInput.focus();
+                }
             } else { // "Select Car Model" or other empty value
                 batteryCapacityInput.value = '';
                 batteryCapacityInput.setAttribute('readonly', true); // Default to readonly if no specific car or custom
@@ -105,12 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const energyNeeded_kWh = (desiredCharge - currentCharge) / 100 * batteryCapacity;
 
             // Determine charging efficiency
-            let efficiencyFactor = 0.85; // Default for AC chargers
-            if (chargerPower >= 50) { // Typically DC Fast Chargers
-                efficiencyFactor = 0.90; // Higher efficiency for DC
-            } else if (chargerPower >= 150) { // Higher power DC
-                efficiencyFactor = 0.92; // Slightly better for very high power
+            let efficiencyFactor = 0.85; // Default for AC chargers (e.g., < 50kW)
+            if (chargerPower >= 150) { // Very high power DC
+                efficiencyFactor = 0.92;
+            } else if (chargerPower >= 50) { // Standard DC Fast Chargers (50kW to 149kW)
+                efficiencyFactor = 0.90;
             }
+            // AC chargers (like 7kW, 22kW) will remain at 0.85
 
 
             const actualEnergyToSupply_kWh = energyNeeded_kWh / efficiencyFactor;
