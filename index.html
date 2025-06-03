@@ -8,46 +8,53 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <!-- Placeholder for company logo -->
-            <img src="logo-placeholder.png" alt="Company Logo">
+        <div class="container">
+            <div class="logo">
+                <!-- Placeholder for company logo -->
+                <img src="logo-placeholder.png" alt="Company Logo">
+            </div>
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#why-us" class="nav-link">Why Choose Us</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle-button" aria-label="Toggle navigation" aria-expanded="false">
+                &#9776;
+            </button>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-us">Why Choose Us</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="hero">
+    <section id="hero" class="reveal-on-scroll">
         <div class="hero-content">
             <h1>Your Trusted Partner for Solar Panel Installation</h1>
             <p>We provide top-quality solar panel installation services for homes, businesses, and communities. Go green and save on energy costs with our expert solutions.</p>
-            <a href="#contact" class="cta-button">Request a Quote</a>
+            <a href="#contact" class="cta-button nav-link">Request a Quote</a>
         </div>
     </section>
 
-    <section id="services">
+    <section id="services" class="reveal-on-scroll">
         <h2>Our Services</h2>
-        <article class="service">
-            <h3>Home Installations</h3>
-            <p>Power your home with clean, renewable energy. We offer customized solar solutions tailored to your specific needs and budget.</p>
-        </article>
-        <article class="service">
-            <h3>Business Installations</h3>
-            <p>Reduce your company's carbon footprint and operational costs with our efficient commercial solar panel systems.</p>
-        </article>
-        <article class="service">
-            <h3>Community Projects</h3>
-            <p>We partner with communities to develop large-scale solar projects, bringing sustainable energy to more people.</p>
-        </article>
+        <div class="service-grid">
+            <article class="service">
+                <h3>Home Installations</h3>
+                <p>Power your home with clean, renewable energy. We offer customized solar solutions tailored to your specific needs and budget.</p>
+            </article>
+            <article class="service">
+                <h3>Business Installations</h3>
+                <p>Reduce your company's carbon footprint and operational costs with our efficient commercial solar panel systems.</p>
+            </article>
+            <article class="service">
+                <h3>Community Projects</h3>
+                <p>We partner with communities to develop large-scale solar projects, bringing sustainable energy to more people.</p>
+            </article>
+        </div>
     </section>
 
-    <section id="why-us">
+    <section id="why-us" class="reveal-on-scroll">
         <h2>Why Choose Us?</h2>
         <div class="arguments">
             <article class="argument">
@@ -65,34 +72,48 @@
         </div>
     </section>
 
-    <section id="testimonials">
+    <section id="testimonials" class="reveal-on-scroll">
         <h2>Customer Testimonials</h2>
-        <article class="testimonial">
-            <p>"The installation was seamless, and our energy bills have dropped significantly. Highly recommend!"</p>
-            <cite>- John Doe, Homeowner</cite>
-        </article>
-        <article class="testimonial">
-            <p>"Professional, reliable, and knowledgeable. They made the switch to solar easy for our business."</p>
-            <cite>- Jane Smith, Business Owner</cite>
-        </article>
+        <div class="testimonial-container">
+            <div class="testimonial-slider">
+                <article class="testimonial">
+                    <p>"The installation was seamless, and our energy bills have dropped significantly. Highly recommend!"</p>
+                    <cite>- John Doe, Homeowner</cite>
+                </article>
+                <article class="testimonial">
+                    <p>"Professional, reliable, and knowledgeable. They made the switch to solar easy for our business."</p>
+                    <cite>- Jane Smith, Business Owner</cite>
+                </article>
+                <article class="testimonial">
+                    <p>"A fantastic experience from start to finish. The team was courteous and the results speak for themselves!"</p>
+                    <cite>- Alice Brown, Community Lead</cite>
+                </article>
+            </div>
+            <button class="testimonial-control prev" id="testimonial-prev">&#10094;</button>
+            <button class="testimonial-control next" id="testimonial-next">&#10095;</button>
+        </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="reveal-on-scroll">
         <h2>Contact Us</h2>
-        <form id="contact-form">
+        <form id="contact-form" novalidate>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
+                <div class="error-message"></div>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                <div class="error-message"></div>
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
+                <div class="error-message"></div>
             </div>
             <button type="submit" class="cta-button">Send Message</button>
+            <div id="form-success-message" class="success-message" style="display: none;"></div>
         </form>
     </section>
 
@@ -100,5 +121,6 @@
         <p>&copy; 2023 Solar Panel Installation Company. All rights reserved.</p>
     </footer>
 
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,435 +1,650 @@
 /* General Styles */
 body {
-    font-family: 'Roboto', sans-serif; /* Modern, readable font */
+    font-family: 'Roboto', sans-serif;
     line-height: 1.7;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6; /* Light greenish-white background */
-    color: #333;
+    background-color: #f8f9fa; /* Slightly off-white, very light gray */
+    color: #343a40; /* Darker gray for better contrast */
     font-size: 16px;
+    overflow-x: hidden; /* Prevent horizontal scrollbars from animations */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif; /* Professional heading font */
+    font-family: 'Montserrat', sans-serif;
     color: #004d40; /* Dark Green */
     margin-top: 0;
+    font-weight: 600; /* Slightly bolder headings */
 }
 
-h1 { font-size: 2.8rem; margin-bottom: 0.8em; }
-h2 { font-size: 2.2rem; margin-bottom: 0.7em; }
-h3 { font-size: 1.6rem; margin-bottom: 0.6em; }
+h1 { font-size: 2.7rem; margin-bottom: 0.75em; }
+h2 { font-size: 2.1rem; margin-bottom: 0.7em; }
+h3 { font-size: 1.5rem; margin-bottom: 0.6em; }
 
 a {
-    color: #0077cc; /* Bright Blue */
+    color: #007bff; /* Standard Bootstrap Blue - good for professional */
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-    color: #005fa3; /* Darker Bright Blue */
+    color: #0056b3; /* Darker Blue */
 }
 
-.container { /* Re-introduce if needed, but preferring full-width sections for modern look */
+.container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1140px; /* Standard container width */
     margin: auto;
-    padding: 20px;
+    padding: 0 15px; /* Consistent padding */
 }
 
 /* Header */
 header {
-    background: #ffffff; /* White background */
-    color: #004d40; /* Dark Green text */
-    padding: 15px 0;
-    border-bottom: 3px solid #0077cc; /* Bright Blue accent */
+    background: #ffffff;
+    color: #004d40;
+    padding: 12px 0; /* Slightly reduced padding */
+    border-bottom: 1px solid #dee2e6; /* Lighter border */
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1020; /* Standard sticky header z-index */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Softer shadow */
 }
 
-header .logo img {
-    height: 60px; /* Adjusted logo size */
-    vertical-align: middle;
-}
-
-header .container { /* Using container for header content alignment */
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header .logo img {
+    height: 55px; /* Adjusted logo size */
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+header .logo img:hover {
+    transform: scale(1.05); /* Subtle hover effect on logo */
 }
 
 header nav ul {
     padding: 0;
     list-style: none;
     margin: 0;
-    display: flex; /* Align nav items horizontally */
+    display: flex;
 }
 
 header nav ul li {
-    margin-left: 25px;
+    margin-left: 30px; /* Increased spacing for clarity */
 }
 
 header nav ul li a {
-    color: #004d40; /* Dark Green */
-    font-weight: 600;
-    font-size: 1rem;
-    padding-bottom: 5px;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
+    color: #004d40;
+    font-weight: 500; /* Medium weight for nav links */
+    font-size: 1.05rem;
+    padding-bottom: 8px; /* Increased padding for larger hover area */
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s ease, border-bottom-color 0.3s ease;
 }
 
 header nav ul li a:hover,
-header nav ul li a.active { /* Class for active link */
-    color: #0077cc; /* Bright Blue */
-    border-bottom: 2px solid #0077cc;
+header nav ul li a.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
 }
+
+/* Hamburger Menu Button */
+.nav-toggle {
+    display: none; /* Hidden by default, shown in mobile */
+    background: none;
+    border: none;
+    color: #004d40; /* Dark Green to match nav text */
+    font-size: 1.8rem; /* Larger icon */
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 15px; /* Space from nav links if they were visible */
+    line-height: 1; /* Ensure icon is vertically centered */
+}
+
+.nav-toggle:hover {
+    color: #007bff; /* Blue on hover */
+}
+
 
 /* Hero Section */
 #hero {
-    background: linear-gradient(rgba(0, 77, 64, 0.7), rgba(0, 122, 204, 0.5)), url('hero-background.jpg'); /* Placeholder, add a real image */
-    background-size: cover;
-    background-position: center;
-    color: #ffffff; /* White text */
-    padding: 80px 20px; /* Increased padding */
+    background: linear-gradient(45deg, rgba(0, 77, 64, 0.85), rgba(0, 123, 255, 0.75)); /* Refined gradient */
+    color: #ffffff;
+    padding: 100px 20px; /* Increased padding */
     text-align: center;
-    min-height: 70vh; /* Make hero section taller */
+    min-height: 65vh; /* Adjusted height */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Angled bottom edge */
 }
 
 #hero .hero-content {
-    max-width: 800px;
+    max-width: 750px; /* Slightly reduced max-width for focus */
+    animation: fadeInDown 1s ease-out; /* Simple intro animation */
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #hero h1 {
-    font-size: 3.5rem; /* Larger hero title */
-    margin-bottom: 20px;
+    font-size: 3.2rem; /* Adjusted hero title size */
+    margin-bottom: 25px;
     color: #ffffff;
     font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Softer text shadow */
 }
 
 #hero p {
-    font-size: 1.3rem; /* Larger hero text */
-    margin-bottom: 40px; /* Increased spacing */
-    line-height: 1.8;
+    font-size: 1.25rem;
+    margin-bottom: 35px;
+    line-height: 1.7;
 }
 
 .cta-button {
     display: inline-block;
-    background: #0077cc; /* Bright Blue */
+    background: #007bff;
     color: #ffffff;
-    padding: 15px 35px; /* Larger button */
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 8px; /* More rounded corners */
+    padding: 14px 32px; /* Adjusted padding */
+    font-size: 1.15rem;
+    font-weight: 500;
+    border-radius: 50px; /* Pill-shaped button */
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* Brighter shadow related to button color */
 }
 
 .cta-button:hover {
-    background: #005fa3; /* Darker Bright Blue */
+    background: #0056b3;
     color: #ffffff;
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-3px); /* More noticeable lift */
+    box-shadow: 0 6px 16px rgba(0, 91, 179, 0.4);
 }
 
 /* General Section Styling */
 section {
-    padding: 60px 20px; /* Uniform padding for sections */
+    padding: 70px 20px; /* Increased padding */
     text-align: center;
+    /* Basic reveal animation setup - to be triggered by JS */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 section:nth-of-type(even) {
-    background-color: #ffffff; /* White background for even sections */
+    background-color: #ffffff;
 }
 
-section:nth-of-type(odd) {
-    background-color: #e8f5e9; /* Very Light Green for odd sections, except hero */
-}
-#hero + section { /* Ensure section after hero has the light green if it's odd */
-    background-color: #e8f5e9;
+section:nth-of-type(odd):not(#hero) {
+     background-color: #e9ecef;
 }
 
 
 section h2 {
-    margin-bottom: 50px; /* Increased bottom margin for section titles */
+    margin-bottom: 60px; /* Increased bottom margin */
     position: relative;
     display: inline-block;
-    padding-bottom: 10px;
+    padding-bottom: 15px; /* Increased padding */
+    font-size: 2.3rem; /* Slightly larger section titles */
 }
 
-section h2::after { /* Underline effect for section titles */
+section h2::after {
     content: '';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    width: 60px;
-    height: 3px;
-    background-color: #0077cc; /* Bright Blue */
+    width: 70px; /* Wider underline */
+    height: 4px; /* Thicker underline */
+    background-color: #007bff;
+    border-radius: 2px; /* Rounded underline */
 }
 
 
 /* Services Section */
-#services .service-grid { /* Using CSS Grid for services */
+#services .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* Space between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+    gap: 35px; /* Increased gap */
     text-align: left;
 }
 
 #services .service {
     background: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 35px 30px; /* Increased padding */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07); /* Refined shadow */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    border-top: 4px solid #004d40; /* Green accent top border */
 }
 
 #services .service:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-8px); /* More lift */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 #services .service h3 {
-    color: #0077cc; /* Bright Blue for service titles */
-    margin-bottom: 15px;
-    font-size: 1.4rem;
+    color: #007bff;
+    margin-bottom: 18px; /* Increased margin */
+    font-size: 1.45rem;
 }
 
 /* Why Choose Us Section */
 #why-us .arguments {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
     text-align: left;
 }
 
 #why-us .argument {
-    background: #ffffff; /* White background for cards */
-    padding: 30px;
-    border-radius: 8px;
-    border-left: 5px solid #004d40; /* Dark Green accent border */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 10px;
+    border-left: 5px solid #007bff; /* Blue accent border */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+#why-us .argument:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 #why-us .argument h3 {
-    color: #004d40; /* Dark Green for argument titles */
-    margin-bottom: 15px;
-    font-size: 1.4rem;
+    color: #004d40;
+    margin-bottom: 18px;
+    font-size: 1.45rem;
 }
 
 /* Testimonials Section */
 #testimonials {
     background-color: #004d40; /* Dark Green background */
     color: #ffffff;
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); /* Angled top/bottom */
+    padding: 100px 20px; /* Adjust padding due to clip-path */
 }
 
 #testimonials h2 {
     color: #ffffff;
 }
 #testimonials h2::after {
-    background-color: #ffffff; /* White underline for dark background */
+    background-color: #ffffff;
 }
 
-#testimonials .testimonial-slider { /* Basic structure for a slider */
+#testimonials .testimonial-slider {
     display: flex;
-    overflow-x: auto; /* Allows horizontal scrolling for now */
-    gap: 20px;
-    padding: 20px 0;
+    overflow-x: auto;
+    gap: 25px;
+    padding: 25px 10px; /* Added horizontal padding for shadow visibility */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #007bff #004d40; /* For Firefox */
+}
+#testimonials .testimonial-slider::-webkit-scrollbar { /* For Chrome, Safari, Edge */
+    height: 8px;
+}
+#testimonials .testimonial-slider::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 4px;
+}
+#testimonials .testimonial-slider::-webkit-scrollbar-track {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Testimonial Container & Controls */
+#testimonials .testimonial-container {
+    position: relative;
+    max-width: 900px; /* Max width for the slider area */
+    margin: 0 auto;
+    overflow: hidden; /* Hide parts of testimonials that are off-screen */
+}
+
+#testimonials .testimonial-slider {
+    display: flex;
+    /* overflow-x: auto; /* Let JS handle the scrolling/transform */
+    transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+    gap: 0; /* Remove gap, items should be flush for transform sliding */
 }
 
 #testimonials .testimonial {
-    background: #ffffff; /* White card */
-    color: #333;
-    padding: 30px;
-    border-radius: 8px;
-    min-width: 300px; /* Minimum width for each testimonial */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex: 0 0 auto; /* Prevent shrinking */
+    background: #ffffff;
+    color: #343a40;
+    padding: 35px 30px;
+    border-radius: 10px;
+    min-width: 100%; /* Each testimonial takes full width of slider */
+    box-sizing: border-box; /* Include padding in width calculation */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    flex: 0 0 100%; /* Each item is full width of the container */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    /* opacity: 0.5; Will be controlled by JS */
+}
+/* Active testimonial (handled by JS, not strictly needed if transform is used on slider) */
+/* #testimonials .testimonial.active {
+    opacity: 1;
+    transform: scale(1);
+} */
+
+
+#testimonials .testimonial:hover {
+    transform: scale(1.01); /* Slight scale effect on hover, ensure it doesn't break layout */
 }
 
 #testimonials .testimonial p {
     font-style: italic;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 #testimonials .testimonial cite {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: 600;
-    color: #0077cc; /* Bright Blue */
+    color: #007bff;
     font-style: normal;
 }
 
 /* Contact Section */
 #contact {
-    background: #e8f5e9; /* Light Green background */
+    background: #f8f9fa; /* Consistent light background */
 }
 
 #contact-form {
-    max-width: 700px;
+    max-width: 650px; /* Slightly narrower */
     margin: 0 auto;
-    background: #ffffff; /* White form background */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 45px; /* Increased padding */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     text-align: left;
 }
 
 #contact-form .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 28px; /* Increased margin */
 }
 
 #contact-form label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #004d40; /* Dark Green */
+    margin-bottom: 10px; /* Increased margin */
+    font-weight: 500; /* Medium weight */
+    color: #004d40;
+    font-size: 1.05rem;
 }
 
 #contact-form input[type="text"],
 #contact-form input[type="email"],
 #contact-form textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 14px; /* Increased padding */
+    border: 1px solid #ced4da; /* Standard border color */
+    border-radius: 6px; /* Slightly more rounded */
     font-size: 1rem;
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
-    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 #contact-form input[type="text"]:focus,
 #contact-form input[type="email"]:focus,
 #contact-form textarea:focus {
-    border-color: #0077cc; /* Bright Blue focus */
+    border-color: #007bff;
     outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Bootstrap-like focus */
 }
 
 #contact-form textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 130px;
 }
 
 #contact-form button[type="submit"] {
-    /* Reusing .cta-button style */
-    width: 100%; /* Full width button */
+    width: 100%;
     padding: 15px;
+    font-size: 1.1rem;
+}
+
+/* Form Validation Messages */
+.form-group .error-message {
+    display: block;
+    color: #dc3545; /* Bootstrap danger color */
+    font-size: 0.875em;
+    margin-top: 5px;
+    min-height: 1em; /* Reserve space to prevent layout shifts */
+}
+
+.success-message {
+    display: block;
+    color: #28a745; /* Bootstrap success color */
+    font-size: 1em;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #d4edda;
 }
 
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 30px 20px; /* Increased padding */
-    background: #00251a; /* Very Dark Green/Almost Black */
-    color: #a0a0a0; /* Light Gray text */
-    font-size: 0.95rem;
+    padding: 40px 20px; /* Increased padding */
+    background: #00251a; /* Very Dark Green */
+    color: #adb5bd; /* Lighter gray for better readability */
+    font-size: 0.9rem;
 }
 
 footer p {
     margin: 0;
+    line-height: 1.6;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 992px) { /* Tablets and larger phones */
-    h1 { font-size: 2.4rem; }
+@media (max-width: 992px) { /* Tablets */
+    h1 { font-size: 2.3rem; }
     h2 { font-size: 1.9rem; }
-    h3 { font-size: 1.4rem; }
+    h3 { font-size: 1.35rem; }
 
-    #hero h1 { font-size: 2.8rem; }
+    #hero h1 { font-size: 2.7rem; }
     #hero p { font-size: 1.15rem; }
+    #hero { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); /* Adjust angle for tablets */ }
 
-    .container {
-        width: 95%;
-    }
+
+    #testimonials { clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%); }
+
+
+    .container { width: 95%; }
 }
 
 @media (max-width: 768px) { /* Smaller tablets and mobile landscape */
+    body { font-size: 15px; }
     header .container {
         flex-direction: column;
         align-items: center;
     }
+    header .logo img { margin-bottom: 0; } /* Reset margin if nav is next to it or below */
 
-    header nav {
-        margin-top: 15px;
+    /* Hamburger Menu and Mobile Nav Styling */
+    .nav-toggle {
+        display: block; /* Show hamburger on smaller screens */
     }
 
-    header nav ul {
+    header #main-nav {
+        /* flex-direction: column; */ /* This was for header .container, nav itself needs different setup */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        max-height: 0; /* Initially hidden */
+        overflow: hidden;
+        transition: max-height 0.4s ease-out; /* Smooth transition for dropdown */
+    }
+
+    header #main-nav.active {
+        max-height: 500px; /* Arbitrary large enough value to show all items */
+    }
+
+    header #main-nav .nav-links {
         flex-direction: column;
         align-items: center;
+        padding: 15px 0; /* Padding when menu is open */
     }
 
-    header nav ul li {
-        margin: 10px 0;
+    header #main-nav .nav-links li {
+        margin: 0; /* Remove side margins */
+        width: 100%;
+        text-align: center;
     }
+
+    header #main-nav .nav-links li a {
+        display: block; /* Make links take full width */
+        padding: 12px 15px; /* Comfortable touch targets */
+        border-bottom: 1px solid #e9ecef; /* Separator for links */
+        font-size: 1.05rem;
+    }
+    header #main-nav .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    header #main-nav .nav-links li a:hover,
+    header #main-nav .nav-links li a.active {
+        background-color: #f8f9fa; /* Light background on hover/active */
+        color: #007bff;
+        border-bottom-color: #e9ecef; /* Keep separator color consistent or remove if preferred */
+    }
+    /* End Hamburger Menu Styling */
+
 
     #hero {
-        padding: 60px 15px;
-        min-height: auto; /* Adjust hero height */
+        padding: 80px 15px;
+        min-height: auto;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); /* Adjust angle */
     }
-    #hero h1 { font-size: 2.3rem; }
-    #hero p { font-size: 1.1rem; }
-    .cta-button { padding: 12px 25px; font-size: 1.1rem; }
+    #hero h1 { font-size: 2.2rem; }
+    #hero p { font-size: 1.05rem; }
+    .cta-button { padding: 12px 28px; font-size: 1.05rem; }
 
+    section { padding: 50px 15px; }
+    section h2 { margin-bottom: 40px; font-size: 2rem; }
 
     #services .service-grid,
     #why-us .arguments {
-        grid-template-columns: 1fr; /* Stack items on smaller screens */
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    #services .service, #why-us .argument, #contact-form {
+        padding: 30px 25px; /* Adjust padding */
     }
 
-    #services .service, #why-us .argument {
-        padding: 25px;
-    }
+    #testimonials { clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%); padding: 80px 15px; }
+    #testimonials .testimonial { min-width: 280px; padding: 30px 25px;}
 
-    #contact-form {
-        padding: 30px;
+    /* Testimonial Controls - Mobile */
+    .testimonial-control {
+        top: auto; /* Remove absolute positioning relative to container height */
+        bottom: 10px; /* Position at the bottom */
+        transform: translateY(0); /* Reset transform */
+        padding: 8px 12px;
+        font-size: 1.3rem;
     }
+    .testimonial-control.prev {
+        left: 30%; /* Adjust position */
+        transform: translateX(-50%);
+    }
+    .testimonial-control.next {
+        right: 30%; /* Adjust position */
+        transform: translateX(50%);
+    }
+    #testimonials .testimonial-container { padding-bottom: 50px; /* Space for controls */ }
+
+
 }
 
 @media (max-width: 480px) { /* Mobile portrait */
-    body { font-size: 15px; }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.7rem; }
-    h3 { font-size: 1.3rem; }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.25rem; }
 
-    #hero h1 { font-size: 2rem; }
+    #hero h1 { font-size: 1.9rem; }
     #hero p { font-size: 1rem; }
+    #hero { clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%); } /* Flatter angle for small screens */
 
-    header { padding: 10px 0; }
-    header .logo img { height: 50px; }
-    header nav ul li { margin: 8px 0; }
-    header nav ul li a { font-size: 0.95rem; }
 
-    section { padding: 40px 15px; }
-    section h2 { margin-bottom: 30px; }
+    header .logo img { height: 45px; }
 
-    .cta-button { padding: 10px 20px; font-size: 1rem; }
+    section { padding: 40px 10px; }
+    section h2 { margin-bottom: 30px; font-size: 1.8rem; }
+    section h2::after { width: 50px; height: 3px; }
 
-    #contact-form { padding: 20px; }
+
+    .cta-button { padding: 10px 22px; font-size: 1rem; }
+
+    #contact-form { padding: 25px 20px; }
     #contact-form input[type="text"],
     #contact-form input[type="email"],
     #contact-form textarea {
-        padding: 10px;
+        padding: 12px;
     }
+    #testimonials .testimonial { min-width: calc(100vw - 40px); } /* Adjust for padding */
+
+    .testimonial-control.prev { left: 25%; }
+    .testimonial-control.next { right: 25%; }
 }
 
-/* Utility for hamburger menu (not implemented in HTML yet, but for future) */
-.nav-toggle {
-    display: none; /* Hidden by default, shown in mobile view */
-    /* Styles for hamburger icon */
+
+/* Testimonial Controls - General (Desktop first) */
+.testimonial-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 77, 64, 0.7); /* Dark Green, semi-transparent */
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%; /* Circular buttons */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 45px; /* Fixed width */
+    height: 45px; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (max-width: 768px) {
-    /* Show hamburger, hide traditional nav */
-    /* .nav-toggle { display: block; } */
-    /* header nav ul { display: none; flex-direction: column; ... } */
-    /* header nav ul.active { display: flex; } */
+.testimonial-control:hover {
+    background-color: #007bff; /* Blue on hover */
 }
+
+.testimonial-control.prev {
+    left: 15px;
+}
+
+.testimonial-control.next {
+    right: 15px;
+}
+
+
+/* Initial state for scroll animations (if not using JS to add class initially) */
+/* This is more of a fallback or if JS is disabled/delayed */
+/*
+section:not(#hero) {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+*/
+/* Add .is-visible class with JS when element is in viewport */
